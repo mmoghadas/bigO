@@ -52,7 +52,7 @@ class ntp {
     owner   => root,
     mode    => '0644',
     content => template('ntp/ntp.conf.erb'),
-    require => Package['ntp', 'ntpdate']
+    require => Package['ntp', 'ntpdate'],
   }
 
   service { 'ntpd':
@@ -60,7 +60,7 @@ class ntp {
     hasstatus  => true,
     hasrestart => true,
     enable     => true,
-    require    => File['ntp_config']
+    require    => File['ntp_config'],
   }
 
 }

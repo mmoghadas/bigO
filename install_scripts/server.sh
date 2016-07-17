@@ -20,11 +20,11 @@ sudo chkconfig puppetmaster on
 #     autosign = true
 # EOF
 
-# Link host -> guest(stargate)
-ln -sf /vagrant/configs/stargate/puppet.conf /etc/puppet/puppet.conf
-ln -sf /vagrant/configs/stargate/site.pp /etc/puppet/manifests/site.pp
+# Link host -> guest
+ln -sf /vagrant/puppetmaster/puppet.conf /etc/puppet/puppet.conf
+ln -sf /vagrant/puppetmaster/site.pp /etc/puppet/manifests/site.pp
 rm -rf /etc/puppet/modules
-ln -sf /vagrant/modules /etc/puppet/modules
+ln -sf /vagrant/puppetmaster/modules /etc/puppet/modules
 
 # Start puppetmaster
 sudo service puppetmaster start

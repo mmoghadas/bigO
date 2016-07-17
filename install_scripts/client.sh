@@ -18,8 +18,8 @@ sudo chkconfig puppet on
 #     localconfig = $vardir/localconfig
 # EOF
 
-# Link host -> guest(sg1)
-ln -sf /vagrant/configs/sg1/puppet.conf /etc/puppet/puppet.conf
+# Link host -> guest
+ln -sf /vagrant/puppet/puppet.conf /etc/puppet/puppet.conf
 
 # Start puppet client
 sudo service puppet start
