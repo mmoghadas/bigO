@@ -30,4 +30,9 @@ cat <<EOF >> /etc/hosts
 192.168.33.101 stargate
 EOF
 
-
+# configure external fact 'role' for factor/puppet
+sudo mkdir -p /etc/facter/facts.d
+cat <<EOF >> /etc/facter/facts.d/role.yaml
+---
+role: web
+EOF

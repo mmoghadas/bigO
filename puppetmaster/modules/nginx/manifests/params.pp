@@ -35,46 +35,7 @@
 #
 # Copyright 2016 Your name here, unless otherwise noted.
 #
-class nginx inherits nginx::params {
-
-  package { 'nginx':
-    ensure => latest,
-  }
-
-  file { 'nginx_conf':
-    ensure  => present,
-    path    => '/etc/nginx/nginx.conf',
-    group   => root,
-    owner   => root,
-    mode    => '0644',
-    content => template('nginx/nginx.conf.erb'),
-    require => Package['nginx'],
-  }
-
-  file { 'nginx_conf_d':
-    ensure  => directory,
-    path    => '/etc/nginx/conf.d/',
-    owner   => root,
-    mode    => '0755',
-    require => Package['nginx'],
-  }
-
-  file { 'nginx_conf_default':
-    ensure  => present,
-    path    => '/etc/nginx/conf.d/default.conf',
-    group   => root,
-    owner   => root,
-    mode    => '0644',
-    content => template('nginx/default.conf.erb'),
-    require => File['nginx_conf_d'],
-  }
-
-  service { 'nginx':
-    ensure     => running,
-    hasstatus  => true,
-    hasrestart => true,
-    enable     => true,
-    require    => File['nginx_conf']
-  }
-
+class nginx::params {
+  $nginx_worker_processes = hiera('nginx::worker_processes', 2)
+  $nginx_worker_connections = hiera('nginx::worker_connections', 2048)
 }

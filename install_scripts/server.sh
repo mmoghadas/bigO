@@ -23,8 +23,14 @@ sudo chkconfig puppetmaster on
 # Link host -> guest
 ln -sf /vagrant/puppetmaster/puppet.conf /etc/puppet/puppet.conf
 ln -sf /vagrant/puppetmaster/site.pp /etc/puppet/manifests/site.pp
-rm -rf /etc/puppet/modules
+
+rm -rf /etc/puppet/{modules,hieradata}
+
 ln -sf /vagrant/puppetmaster/modules /etc/puppet/modules
+ln -sf /vagrant/puppetmaster/hieradata /etc/puppet/hieradata
+
+ln -sf /vagrant/puppetmaster/hiera.yaml /etc/hiera.yaml
+ln -sf /vagrant/puppetmaster/hiera.yaml /etc/puppet/hiera.yaml
 
 # Start puppetmaster
 sudo service puppetmaster start

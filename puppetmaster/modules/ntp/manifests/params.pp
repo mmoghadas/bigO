@@ -35,32 +35,9 @@
 #
 # Copyright 2016 Your name here, unless otherwise noted.
 #
-class ntp inherits ntp::params {
-
-  package { 'ntp':
-    ensure => $ntp::params::ntp_package_ensure,
-  }
-
-  package { 'ntpdate':
-    ensure => installed,
-  }
-
-  file { 'ntp_config':
-    ensure  => present,
-    path    => '/etc/ntp.conf',
-    group   => root,
-    owner   => root,
-    mode    => '0644',
-    content => template('ntp/ntp.conf.erb'),
-    require => Package['ntp', 'ntpdate'],
-  }
-
-  service { 'ntpd':
-    ensure     => $ntp::params::ntp_service_ensure,
-    hasstatus  => true,
-    hasrestart => true,
-    enable     => $ntp::params::ntp_service_enable,
-    require    => File['ntp_config'],
-  }
-
+class ntp::params {
+  $ntp_package_ensure = hiera('ntp::package_ensure', latest)
+  $ntp_service_enable = hiera('ntp::service_enable', true)
+  $ntp_service_ensure = hiera('ntp::service_ensure', running)
+  $ntp_servers = hiera('ntp::servers', ['1.centos.pool.ntp.org', '2.centos.pool.ntp.org'])
 }
