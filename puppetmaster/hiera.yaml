@@ -1,0 +1,13 @@
+---
+:backends:
+  - yaml
+
+:hierarchy:
+  - "roles/%{::role}"
+  - common
+
+:yaml:
+  :datadir: /etc/puppet/hieradata
+
+:logger: console
+

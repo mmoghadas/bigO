@@ -1,0 +1,14 @@
+{
+  "name": "mmoghadas-ntp",
+  "version": "0.1.0",
+  "author": "mmoghadas",
+  "summary": "NTP Super Module",
+  "license": "Apache 2.0",
+  "source": "https://github.com/mmoghadas/bigO/modules/ntp",
+  "issues_url": "https://github.com/mmoghadas/bigO/modules/ntp/issues",
+  "project_page": "https://github.com/mmoghadas/bigO/modules/ntp",
+  "dependencies": [
+    {"version_requirement":">= 1.0.0","name":"puppetlabs-stdlib"}
+  ]
+}
+
