@@ -52,7 +52,7 @@ class ntp inherits ntp::params {
     owner   => root,
     mode    => '0644',
     content => template('ntp/ntp.conf.erb'),
-    require => Package['ntp', 'ntpdate'],
+    require => Package['ntp'],
   }
 
   service { 'ntpd':
